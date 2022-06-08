@@ -18,21 +18,28 @@ const PlayerModal = ({
             alt="player"
             className="object-contain w-1/2 my-auto rounded-full"
           /> */}
-          <div className="flex flex-col ml-6 text-2xl ">Working here</div>
-
-          <div> Name: {players[0].long_name}</div>
-          <div> Club Jersey Number: {players[0].club_jersey_number}</div>
-          <div> Club: {players[0].club_name}</div>
-          <div> National Jersey Number: {players[0].nation_jersey_number}</div>
-          <div> Nationality: {players[0].nationality_name}</div>
-          <div> Overall{players[0].overall}</div>
-          <div> Pace: {players[0].pace}</div>
-          <div> Dribbling: {players[0].dribbling}</div>
-          <div> Shooting: {players[0].shooting}</div>
-          <div> Defending: {players[0].defending}</div>
-          <div> Physical: {players[0].physic}</div>
-          <div> Skill Moves: {players[0].skill_moves}</div>
-          <div> Weak Foot:{players[0].weak_foot}</div>
+          <div className="flex flex-col ml-6 text-2xl ">
+            <div>Working HERE</div>
+            <div> Name: {players[0].long_name}</div>
+            <div> Club Jersey Number: {players[0].club_jersey_number}</div>
+            <div> Club: {players[0].club_name}</div>
+            <div>
+              {" "}
+              National Jersey Number: {players[0].nation_jersey_number}
+            </div>
+            <div> Nationality: {players[0].nationality_name}</div>
+            <div> Overall{players[0].overall}</div>
+            <div> Pace: {players[0].pace}</div>
+            <div> Dribbling: {players[0].dribbling}</div>
+            <div> Shooting: {players[0].shooting}</div>
+            <div> Defending: {players[0].defending}</div>
+            <div> Physical: {players[0].physic}</div>
+            <div> Skill Moves: {players[0].skill_moves}</div>
+            <div> Weak Foot:{players[0].weak_foot}</div>
+            <div>DOB: {players[0].dob}</div>
+            <div>WAGE_EUR: {players[0].wage_eur}</div>
+            <div>AGE: {players[0].age}</div>
+          </div>
         </div>
         <div
           className="absolute bottom-0 left-0"
