@@ -34,7 +34,7 @@ const SearchBar = ({
         <Selector setOperator={setOperator} />
         <button type="submit">
           <img
-            className="mx-auto w-20 text-white mb-2 content-image text-2xl"
+            className="mx-auto w-20 text-white mb-2 z-10 content-image text-2xl"
             src={SearchIcon}
             alt="search"
             onClick={handleSubmit}

@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 
-const CheckboxGroup = ({ field, itemsArray }) => {
-  const [finalList, setFinalList] = useState([]);
+const CheckboxGroup = ({ field, itemsArray, setFinalList }) => {
   const [checkedState, setCheckedState] = useState(
     new Array(itemsArray.length).fill(false)
   );
@@ -23,7 +22,7 @@ const CheckboxGroup = ({ field, itemsArray }) => {
   };
 
   return (
-    <div className="text-black ml-12 p-2">
+    <div className="text-white ml-12 p-2">
       <h3 className="text-xl font-bold">{field}</h3>
       <ul className="countries-list">
         {itemsArray.map((name, index) => {

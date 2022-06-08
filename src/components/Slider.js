@@ -5,7 +5,7 @@ import { Range } from "react-range";
 const Slider = ({ field, value, setValue, max, step }) => {
   return (
     <div className="w-full flex justify-center ">
-      <div className="w-1/5 p-4 border-4 border-indigo-900 rounded-lg">
+      <div className="w-full p-4 border-4 border-indigo-900 rounded-lg text-white">
         <label className="font-bold">{field}</label>
         <Range
           step={step}
@@ -18,7 +18,7 @@ const Slider = ({ field, value, setValue, max, step }) => {
           renderTrack={({ props, children }) => (
             <div
               {...props}
-              className="w-full h-3 pr-2 my-4 bg-teal-700 rounded-md"
+              className="w-full h-3 pr-2 my-4 bg-green-600 rounded-md mt-10"
             >
               {children}
             </div>
