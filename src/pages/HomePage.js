@@ -7,7 +7,7 @@ import DreamTeamGrid from "../components/DreamTeamGrid";
 import SearchBar from "../components/SearchBar";
 
 import PlayerModal from "../components/PlayerModal";
-import AdvancedSearch from "./AdvancedSearch";
+import AdvancedSearch from "../components/AdvancedSearch";
 
 const HomePage = () => {
   const [position2Fill, setPosition2Fill] = useState(100);
@@ -16,7 +16,7 @@ const HomePage = () => {
   const [showAdvancedSearch, setShowAdvancedSearch] = useState(false);
   const [playerIndex, setPlayerIndex] = useState(-100);
 
-  let navigate = useNavigate();
+  //let navigate = useNavigate();
 
   const {
     operator,
