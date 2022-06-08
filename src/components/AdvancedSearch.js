@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import Calendar from "../components/Calender";
-import CheckboxGroup from "../components/CheckboxGroup";
+import Calendar from "./Calender";
+import CheckboxGroup from "./CheckboxGroup";
 
-import Slider from "../components/Slider";
+import Slider from "./Slider";
 
 const AdvancedSearch = () => {
   const [salary, setSalary] = useState([100]);
