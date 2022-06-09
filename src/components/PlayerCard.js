@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Footballer from "../images/Footballer.png";
 
 const PlayerCard = ({

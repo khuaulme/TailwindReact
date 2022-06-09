@@ -1,27 +1,36 @@
-import React, { useState } from "react";
+import React from "react";
 import Calendar from "./Calender";
 import CheckboxGroup from "./CheckboxGroup";
 
 import Slider from "./Slider";
 
-const AdvancedSearch = () => {
-  const [salary, setSalary] = useState([400000]);
-  const [age, setAge] = useState([28]);
-  const [overall, setOverall] = useState([60]);
-  const [skillMoves, setSkillMoves] = useState([60]);
-  const [defending, setDefending] = useState([60]);
-  const [dribbling, setDribbling] = useState([60]);
-  const [pace, setPace] = useState([60]);
-  const [countries, setCountries] = useState([]);
-  const [clubs, setClubs] = useState([]);
-  const [dob, setDob] = useState(new Date(1970, 12, 1));
-
+const AdvancedSearch = ({
+  salary,
+  setSalary,
+  age,
+  setAge,
+  overall,
+  setOverall,
+  skillMoves,
+  setSkillMoves,
+  defending,
+  setDefending,
+  dribbling,
+  setDribbling,
+  pace,
+  setPace,
+  setCountries,
+  setPositions,
+  setClubs,
+  dob,
+  setDob,
+}) => {
   return (
     <div className="flex flex-col w-full bg-black">
       <h2 className="text-center text-xl text-yellow-400">Advanced Scouting</h2>
 
-      <div className="flex mt-10 justify-evenly">
-        <div className="flex ml-6 ">
+      <div className="flex mt-6 justify-evenly items-center px-24">
+        <div className="flex ml-6 mt-8 ">
           <CheckboxGroup
             field="Select Country"
             itemsArray={countryNames}
@@ -32,9 +41,14 @@ const AdvancedSearch = () => {
             itemsArray={clubNames}
             setFinalList={setClubs}
           />
+          <CheckboxGroup
+            field="Position"
+            itemsArray={positions}
+            setFinalList={setPositions}
+          />
         </div>
 
-        <div className="flex grid grid-cols-2 gap-x-4 gap-y-8 px-10 ">
+        <div className="flex grid grid-cols-2 gap-x-4 gap-y-8 px-10">
           <div className="px-12 w-full p-4 border-4 border-indigo-900 rounded-lg text-white">
             <Calendar dob={dob} setDob={setDob} />
           </div>
@@ -43,7 +57,7 @@ const AdvancedSearch = () => {
             field="Salary (euros)"
             value={salary}
             setValue={setSalary}
-            max={2000000}
+            max={150000}
             step={1000}
           />
           <Slider
@@ -58,7 +72,7 @@ const AdvancedSearch = () => {
             value={skillMoves}
             setValue={setSkillMoves}
             step={1}
-            max={100}
+            max={5}
           />
           <Slider
             field="Pace"
@@ -153,4 +167,22 @@ const countryNames = [
   "Australia",
   "India",
   "Venezuela",
+];
+
+const positions = [
+  "CB",
+  "CM",
+  "LWB",
+  "RM",
+  "RW",
+  "CAM",
+  "CDM",
+  "RWB",
+  "LB",
+  "LW",
+  "RB",
+  "ST",
+  "GK",
+  "LM",
+  "CF",
 ];

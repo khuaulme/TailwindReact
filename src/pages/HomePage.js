@@ -1,11 +1,9 @@
 // Dependencies
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { useHomeFetch } from "../hooks/useHomeFetch";
 import PlayerGrid from "../components/PlayerGrid";
 import DreamTeamGrid from "../components/DreamTeamGrid";
 import SearchBar from "../components/SearchBar";
-
 import PlayerModal from "../components/PlayerModal";
 import AdvancedSearch from "../components/AdvancedSearch";
 
@@ -13,10 +11,8 @@ const HomePage = () => {
   const [position2Fill, setPosition2Fill] = useState(100);
   const [highlightCard, setHighlightCard] = useState(null);
   const [showPlayerModal, setShowPlayerModal] = useState(false);
-  const [showAdvancedSearch, setShowAdvancedSearch] = useState(false);
-  const [playerIndex, setPlayerIndex] = useState(-100);
 
-  //let navigate = useNavigate();
+  const [playerIndex, setPlayerIndex] = useState(-100);
 
   const {
     operator,
@@ -32,12 +28,34 @@ const HomePage = () => {
     setSubmitted,
     showAutocompletePlayers,
     setShowAutocompletePlayers,
+    salary,
+    setSalary,
+    age,
+    setAge,
+    overall,
+    setOverall,
+    skillMoves,
+    setSkillMoves,
+    defending,
+    setDefending,
+    dribbling,
+    setDribbling,
+    pace,
+    setPace,
+    showAdvancedSearch,
+    setShowAdvancedSearch,
+    setPositions,
+    setCountries,
+    setClubs,
+    dob,
+    setDob,
   } = useHomeFetch();
 
   // console.log("players", players);
 
   // insert SAVE here
 
+  //-------------------------------- FUNCTION TO ADDPLAYER --------------------------------------------------------
   const addPlayerToTeam = (player, spot) => {
     console.log("Trying to add player.");
     console.log("IN ADDING PLAYER FUNCTION:", spot);
@@ -74,6 +92,8 @@ const HomePage = () => {
 
     // insert big BLURB here
   };
+
+  //-------------------------------- END FUNCTION TO ADDPLAYER --------------------------------------------------------
 
   const relegatePlayerFromTeam = async (pos) => {
     console.log(`Trying to remove player ${pos}.`);
@@ -118,7 +138,29 @@ const HomePage = () => {
           clipRule="evenodd"
         />
       </svg>
-      {showAdvancedSearch && <AdvancedSearch />}
+      {showAdvancedSearch && (
+        <AdvancedSearch
+          salary={salary}
+          setSalary={setSalary}
+          age={age}
+          setAge={setAge}
+          overall={overall}
+          setOverall={setOverall}
+          skillMoves={skillMoves}
+          setSkillMoves={setSkillMoves}
+          defending={defending}
+          setDefending={setDefending}
+          dribbling={dribbling}
+          setDribbling={setDribbling}
+          pace={pace}
+          setPace={setPace}
+          setCountries={setCountries}
+          setClubs={setClubs}
+          setPositions={setPositions}
+          dob={dob}
+          setDob={setDob}
+        />
+      )}
 
       <PlayerGrid
         header={searchTerm ? null : "Player Search Results"}

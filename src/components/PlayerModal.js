@@ -9,6 +9,7 @@ const PlayerModal = ({
   position2Fill,
 }) => {
   const shortDate = new Date(players[playerIndex].dob);
+
   const birthday = shortDate.toLocaleDateString();
   return (
     <div className="fixed inset-0 z-20 p-20 flex justify-center bg-slate-700 ">

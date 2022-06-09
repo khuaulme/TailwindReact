@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 
 export const useHomeFetch = () => {
   const [searchTerm, setSearchTerm] = useState("");
-
   const [players, setPlayers] = useState([]);
   const [dreamTeam, setDreamTeam] = useState(emptyTeam);
   const [showDreamTeam, setShowDreamTeam] = useState(true);
@@ -10,14 +9,28 @@ export const useHomeFetch = () => {
   const [submitted, setSubmitted] = useState(false);
   const [showPlayerChoices, setShowPlayerChoices] = useState(false);
   const [showAutocompletePlayers, setShowAutocompletePlayers] = useState(false);
+  const [showAdvancedSearch, setShowAdvancedSearch] = useState(false);
+  const [salary, setSalary] = useState([0]);
+  const [age, setAge] = useState([28]);
+  const [overall, setOverall] = useState([60]);
+  const [skillMoves, setSkillMoves] = useState([1]);
+  const [defending, setDefending] = useState([60]);
+  const [dribbling, setDribbling] = useState([60]);
+  const [pace, setPace] = useState([60]);
+  const [countries, setCountries] = useState([]);
+  const [clubs, setClubs] = useState([]);
+  const [dob, setDob] = useState(new Date(1970, 12, 1));
+  const [positions, setPositions] = useState([]);
 
   const TextEndPoint =
     "https://us-east-1.aws.data.mongodb-api.com/app/atlassearchsoccer-ktzfd/endpoint/players";
   const WildcardEndPoint =
     "https://us-east-1.aws.data.mongodb-api.com/app/atlassearchsoccer-ktzfd/endpoint/wildcard";
-
   const AutocompleteEndPoint =
     "https://us-east-1.aws.data.mongodb-api.com/app/atlassearchsoccer-ktzfd/endpoint/autocomplete";
+
+  const URL_SEARCH_ADVANCED =
+    "https://us-east-1.aws.data.mongodb-api.com/app/atlassearchsoccer-ktzfd/endpoint/advancedSearch";
 
   const getPlayersAutocomplete = async () => {
     let API = AutocompleteEndPoint;
@@ -46,6 +59,48 @@ export const useHomeFetch = () => {
     }
   };
 
+  // ---------------------GET_PLAYERS_ADVANCED------------------------------
+  const getPlayersAdvanced = () => {
+    console.log("Advanced Search");
+
+    const data = {
+      searchTerm: searchTerm,
+      operator: operator,
+      countries: countries,
+      clubs: clubs,
+      age: age[0],
+      overall: overall[0],
+      dribbling: dribbling[0],
+      skillMoves: skillMoves[0],
+      defending: defending[0],
+      pace: pace[0],
+      dob: new Date(dob),
+      salary: salary[0],
+      positions: positions,
+    };
+
+    const requestOptions = {
+      method: "POST",
+      body: JSON.stringify(data),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+
+    fetch(URL_SEARCH_ADVANCED, requestOptions).then(() => {
+      console.log("SUBMITTED ADVANCED SEARCH");
+    });
+
+    //  if (playersJSON && playersJSON.length > 0) {
+    // setShowPlayerChoices(true);
+
+    // setPlayers(playersJSON);
+    // console.log("PLAYERSJSON: ", playersJSON);
+
+    // insert big BLURB here
+  };
+  // ------------------------END_GET_PLAYERS_ADVANCED-----------------------------
+
   const getTeam = async () => {
     const dreamPlayers = await (
       await fetch(
@@ -67,9 +122,16 @@ export const useHomeFetch = () => {
     // eslint-disable-next-line
   }, [searchTerm]);
 
+  // -------------------------------- USE_EFFECTS ---------------------------
   useEffect(() => {
     if (!submitted) return;
-    getPlayers();
+    if (!showAdvancedSearch) {
+      getPlayers();
+    }
+    if (showAdvancedSearch) {
+      getPlayersAdvanced();
+    }
+
     setSubmitted(false);
     console.log(operator);
     // eslint-disable-next-line
@@ -82,6 +144,7 @@ export const useHomeFetch = () => {
 
     // eslint-disable-next-line
   }, [showDreamTeam]);
+  // ----------------------------END USE_EFFECTS ---------------------------
 
   return {
     operator,
@@ -99,6 +162,27 @@ export const useHomeFetch = () => {
     setShowPlayerChoices,
     showAutocompletePlayers,
     setShowAutocompletePlayers,
+    showAdvancedSearch,
+    setShowAdvancedSearch,
+    salary,
+    setSalary,
+    age,
+    setAge,
+    overall,
+    setOverall,
+    skillMoves,
+    setSkillMoves,
+    defending,
+    setDefending,
+    dribbling,
+    setDribbling,
+    pace,
+    setPace,
+    setPositions,
+    setCountries,
+    setClubs,
+    dob,
+    setDob,
   };
 };
 
