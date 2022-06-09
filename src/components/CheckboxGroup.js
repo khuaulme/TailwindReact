@@ -23,7 +23,7 @@ const CheckboxGroup = ({ field, itemsArray, setFinalList }) => {
 
   return (
     <div className="text-white ml-12 p-2">
-      <h3 className="text-xl font-bold">{field}</h3>
+      <h3 className="text-xl font-bold mb-2 text-green-500">{field}</h3>
       <ul className="countries-list">
         {itemsArray.map((name, index) => {
           return (
