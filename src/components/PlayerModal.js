@@ -8,41 +8,78 @@ const PlayerModal = ({
   addPlayerToTeam,
   position2Fill,
 }) => {
+  const shortDate = new Date(players[playerIndex].dob);
+  const birthday = shortDate.toLocaleDateString();
   return (
     <div className="fixed inset-0 z-20 p-20 flex justify-center bg-slate-700 ">
-      <div className="relative flex flex-col w-2/3 bg-white  border border-black rounded h-2/3 mt-60 ">
-        <div className="p-4 mb-4 text-4xl font-bold text-center text-tolopea-500 "></div>
-        <div className="flex justify-around py-4 pl-2 pr-4">
-          {/* <img
-            src={player.player_face_url}
-            alt="player"
-            className="object-contain w-1/2 my-auto rounded-full"
-          /> */}
-          <div className="flex flex-col ml-6 text-2xl ">
-            <div>Working HERE</div>
-            <div> Name: {players[0].long_name}</div>
-            <div> Club Jersey Number: {players[0].club_jersey_number}</div>
-            <div> Club: {players[0].club_name}</div>
-            <div>
+      <div className="relative flex flex-col w-2/3 bg-gray-900 text-white border-2 border-white rounded pt-5">
+        <div className="flex py-4 pl-2 pr-4">
+          <div className="left flex flex-col w-1/2 justify-center items-center space-y-8">
+            <img
+              src={players[playerIndex].player_face_url}
+              alt="player"
+              className="object-contain w-3/5 rounded-full my-auto rounded"
+            />
+            <div className="mx-auto text-4xl font-bold">
               {" "}
-              National Jersey Number: {players[0].nation_jersey_number}
+              {players[playerIndex].short_name}
             </div>
-            <div> Nationality: {players[0].nationality_name}</div>
-            <div> Overall{players[0].overall}</div>
-            <div> Pace: {players[0].pace}</div>
-            <div> Dribbling: {players[0].dribbling}</div>
-            <div> Shooting: {players[0].shooting}</div>
-            <div> Defending: {players[0].defending}</div>
-            <div> Physical: {players[0].physic}</div>
-            <div> Skill Moves: {players[0].skill_moves}</div>
-            <div> Weak Foot:{players[0].weak_foot}</div>
-            <div>DOB: {players[0].dob}</div>
-            <div>WAGE_EUR: {players[0].wage_eur}</div>
-            <div>AGE: {players[0].age}</div>
+            <div>Age: {players[playerIndex].age}</div>
+            <div className="flex space-x-24 p-2">
+              <div className="flex flex-col items-center">
+                <img
+                  src={players[playerIndex].nation_flag_url}
+                  alt="flag"
+                  className="object-contain w-12 my-auto rounded mr-2"
+                />
+                <div>{players[playerIndex].nationality_name}</div>
+                <div> Number: {players[playerIndex].nation_jersey_number}</div>
+              </div>
+              <div className="flex flex-col items-center ">
+                <img
+                  src={players[playerIndex].club_logo_url}
+                  alt="flag"
+                  className="object-contain w-12 my-auto rounded mr-2"
+                />
+                <div>{players[playerIndex].club_name}</div>
+                <div> Number: {players[playerIndex].club_jersey_number}</div>
+              </div>
+            </div>
+            <div className=" border border-green-400 rounded-full p-1  text-2xl w-1/4 mx-auto text-center">
+              {" "}
+              {players[playerIndex]?.overall}
+            </div>
+          </div>
+
+          <div className="right flex flex-col ml-6 text-2xl flex-grow space-y-8">
+            <div className="font-bold text-2xl text-green-500">
+              {" "}
+              {players[playerIndex].long_name}
+            </div>
+
+            <div> Pace: {players[playerIndex].pace}</div>
+            <div> Dribbling: {players[playerIndex].dribbling}</div>
+            <div> Shooting: {players[playerIndex].shooting}</div>
+            <div> Defending: {players[playerIndex].defending}</div>
+            <div> Physical: {players[playerIndex].physic}</div>
+            <div> Skill Moves: {players[playerIndex].skill_moves}</div>
+            <div> Weak Foot: {players[playerIndex].weak_foot}</div>
+            <hr
+              style={{
+                color: "green",
+                backgroundColor: "green",
+                height: 2,
+                borderColor: "green",
+              }}
+            />
+            <div>Date of Birth: {birthday}</div>
+            <div className="text-green-500">
+              Salary € {players[playerIndex].wage_eur}
+            </div>
           </div>
         </div>
         <div
-          className="absolute bottom-0 left-0"
+          className="absolute bottom-0 left-0 ml-3 mb-3"
           onClick={() => {
             setShowPlayerModal(false);
             setPlayerIndex(-100);
@@ -63,7 +100,7 @@ const PlayerModal = ({
           </svg>
         </div>
         <div
-          className="absolute bottom-0 right-0"
+          className="absolute bottom-0 right-0 mr-3 mb-3"
           onClick={() => {
             console.log("CLICK ADD PLAYER: ", players[playerIndex].short_name);
             addPlayerToTeam(players[playerIndex], position2Fill);
