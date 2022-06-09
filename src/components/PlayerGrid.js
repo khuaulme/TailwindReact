@@ -16,6 +16,7 @@ const PlayerGrid = ({
   searchTerm,
   setPlayerIndex,
   setShowPlayerModal,
+  showAdvancedSearch,
 }) => {
   return (
     <div className="flex relative px-10 mb-6 ">
@@ -46,7 +47,7 @@ const PlayerGrid = ({
       ) : (
         <div className="grid grid-cols-6 gap-2 p-2 mt-6 ml-48 w-full"></div>
       )}
-      {searchTerm !== "" && (
+      {searchTerm !== "" && !showAdvancedSearch && (
         <div className="w-1/5 px-8">
           <SearchCode operator={operator} searchTerm={searchTerm} />
         </div>

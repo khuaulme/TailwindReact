@@ -138,6 +138,24 @@ const HomePage = () => {
           clipRule="evenodd"
         />
       </svg>
+
+      <PlayerGrid
+        header={searchTerm ? null : "Player Search Results"}
+        players={players}
+        addPlayerToTeam={addPlayerToTeam}
+        position2Fill={position2Fill}
+        setPosition2Fill={setPosition2Fill}
+        setHighlightCard={setHighlightCard}
+        highlightCard={highlightCard}
+        dreamTeam={dreamTeam}
+        setShowPlayerChoices={setShowPlayerChoices}
+        showPlayerChoices={showPlayerChoices}
+        searchTerm={searchTerm}
+        operator={operator}
+        setPlayerIndex={setPlayerIndex}
+        setShowPlayerModal={setShowPlayerModal}
+        showAdvancedSearch={showAdvancedSearch}
+      />
       {showAdvancedSearch && (
         <AdvancedSearch
           salary={salary}
@@ -161,23 +179,6 @@ const HomePage = () => {
           setDob={setDob}
         />
       )}
-
-      <PlayerGrid
-        header={searchTerm ? null : "Player Search Results"}
-        players={players}
-        addPlayerToTeam={addPlayerToTeam}
-        position2Fill={position2Fill}
-        setPosition2Fill={setPosition2Fill}
-        setHighlightCard={setHighlightCard}
-        highlightCard={highlightCard}
-        dreamTeam={dreamTeam}
-        setShowPlayerChoices={setShowPlayerChoices}
-        showPlayerChoices={showPlayerChoices}
-        searchTerm={searchTerm}
-        operator={operator}
-        setPlayerIndex={setPlayerIndex}
-        setShowPlayerModal={setShowPlayerModal}
-      />
 
       <br></br>
       <hr

@@ -60,7 +60,7 @@ export const useHomeFetch = () => {
   };
 
   // ---------------------GET_PLAYERS_ADVANCED------------------------------
-  const getPlayersAdvanced = () => {
+  const getPlayersAdvanced = async () => {
     console.log("Advanced Search");
 
     const data = {
@@ -87,9 +87,15 @@ export const useHomeFetch = () => {
       },
     };
 
-    fetch(URL_SEARCH_ADVANCED, requestOptions).then(() => {
-      console.log("SUBMITTED ADVANCED SEARCH");
-    });
+    const response = await fetch(URL_SEARCH_ADVANCED, requestOptions);
+    const advanceSearchPlayers = await response.json();
+    console.log(advanceSearchPlayers);
+
+    if (advanceSearchPlayers && advanceSearchPlayers.length > 0) {
+      setShowPlayerChoices(true);
+
+      setPlayers(advanceSearchPlayers);
+    }
 
     //  if (playersJSON && playersJSON.length > 0) {
     // setShowPlayerChoices(true);
