@@ -52,7 +52,7 @@ const PlayerModal = ({
             </div>
           </div>
 
-          <div className="right flex flex-col ml-6 text-2xl flex-grow space-y-8">
+          <div className="right flex flex-col ml-6 text-lg flex-grow space-y-8">
             <div className="font-bold text-2xl text-green-500">
               {" "}
               {players[playerIndex].long_name}
@@ -78,6 +78,10 @@ const PlayerModal = ({
               Salary € {players[playerIndex].wage_eur}
             </div>
           </div>
+        </div>
+        <div className="text-white text-2xl text-center">Scouting Report</div>
+        <div className="text-yellow-400 text-lg text-center px-20">
+          {players[playerIndex].player_traits}
         </div>
         <div
           className="absolute bottom-0 left-0 ml-3 mb-3"

@@ -11,12 +11,12 @@ export const useHomeFetch = () => {
   const [showAutocompletePlayers, setShowAutocompletePlayers] = useState(false);
   const [showAdvancedSearch, setShowAdvancedSearch] = useState(false);
   const [salary, setSalary] = useState([0]);
-  const [age, setAge] = useState([28]);
-  const [overall, setOverall] = useState([60]);
-  const [skillMoves, setSkillMoves] = useState([1]);
-  const [defending, setDefending] = useState([60]);
-  const [dribbling, setDribbling] = useState([60]);
-  const [pace, setPace] = useState([60]);
+  const [age, setAge] = useState([0]);
+  const [overall, setOverall] = useState([0]);
+  const [skillMoves, setSkillMoves] = useState([0]);
+  const [defending, setDefending] = useState([0]);
+  const [dribbling, setDribbling] = useState([0]);
+  const [pace, setPace] = useState([0]);
   const [countries, setCountries] = useState([]);
   const [clubs, setClubs] = useState([]);
   const [dob, setDob] = useState(new Date(1970, 12, 1));
@@ -88,20 +88,16 @@ export const useHomeFetch = () => {
     };
 
     const response = await fetch(URL_SEARCH_ADVANCED, requestOptions);
-    const advanceSearchPlayers = await response.json();
-    console.log(advanceSearchPlayers);
+    const responseJSON = await response.json();
+    const advancedSearchPlayers = responseJSON.players;
+    const aggregation = responseJSON.aggregation;
+    console.log(aggregation);
 
-    if (advanceSearchPlayers && advanceSearchPlayers.length > 0) {
+    if (advancedSearchPlayers && advancedSearchPlayers.length > 0) {
       setShowPlayerChoices(true);
 
-      setPlayers(advanceSearchPlayers);
+      setPlayers(advancedSearchPlayers);
     }
-
-    //  if (playersJSON && playersJSON.length > 0) {
-    // setShowPlayerChoices(true);
-
-    // setPlayers(playersJSON);
-    // console.log("PLAYERSJSON: ", playersJSON);
 
     // insert big BLURB here
   };

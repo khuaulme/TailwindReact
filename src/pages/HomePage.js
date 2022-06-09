@@ -51,8 +51,6 @@ const HomePage = () => {
     setDob,
   } = useHomeFetch();
 
-  // console.log("players", players);
-
   // insert SAVE here
 
   //-------------------------------- FUNCTION TO ADDPLAYER --------------------------------------------------------
