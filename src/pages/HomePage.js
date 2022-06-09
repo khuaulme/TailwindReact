@@ -69,8 +69,7 @@ const HomePage = () => {
       },
     };
 
-    const URL_TO_POST_PLAYER =
-      "https://us-east-1.aws.data.mongodb-api.com/app/atlassearchsoccer-ktzfd/endpoint/postPlayer";
+    const URL_TO_POST_PLAYER = "";
 
     const requestOptions = {
       method: "POST",
@@ -80,15 +79,13 @@ const HomePage = () => {
       },
     };
 
-    fetch(URL_TO_POST_PLAYER, requestOptions).then(() => {
-      console.log("SUBMITTED PLAYER!!");
-      setHighlightCard(null);
-      setShowPlayerChoices(false);
-      setShowDreamTeam(true);
-      setSearchTerm("");
-    });
-
-    // insert big BLURB here
+    // fetch(URL_TO_POST_PLAYER, requestOptions).then(() => {
+    //   console.log("SUBMITTED PLAYER!!");
+    //   setHighlightCard(null);
+    //   setShowPlayerChoices(false);
+    //   setShowDreamTeam(true);
+    //   setSearchTerm("");
+    // });
   };
 
   //-------------------------------- END FUNCTION TO ADDPLAYER --------------------------------------------------------
@@ -96,13 +93,13 @@ const HomePage = () => {
   const relegatePlayerFromTeam = async (pos) => {
     console.log(`Trying to remove player ${pos}.`);
 
+    const RELEGATE_PLAYER_URL = ``;
+
     setPosition2Fill(pos);
-    const url = `https://us-east-1.aws.data.mongodb-api.com/app/atlassearchsoccer-ktzfd/endpoint/deletePlayer?pos=${pos}`;
-    const response = await fetch(url);
+
+    //  const response = await fetch(RELEGATE_PLAYER_URL);
 
     setShowDreamTeam(true);
-
-    // insert BLURB2
   };
 
   return (
